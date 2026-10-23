@@ -1,0 +1,25 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+# Copy solution and restore dependencies
+COPY backend/*.sln .
+COPY backend/src/Vini.Domain/*.csproj backend/src/Vini.Domain/
+COPY backend/src/Vini.Application/*.csproj backend/src/Vini.Application/
+COPY backend/src/Vini.Infrastructure/*.csproj backend/src/Vini.Infrastructure/
+COPY backend/src/Vini.Api/*.csproj backend/src/Vini.Api/
+RUN dotnet restore "backend/src/Vini.Api/Vini.Api.csproj"
+
+# Copy full source and build
+COPY backend/src/ backend/src/
+WORKDIR /src/backend/src/Vini.Api
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+
+# Runtime Image
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Expose ports
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "Vini.Api.dll"]

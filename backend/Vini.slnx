@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Vini.Api/Vini.Api.csproj" />
+    <Project Path="src/Vini.Application/Vini.Application.csproj" />
+    <Project Path="src/Vini.Domain/Vini.Domain.csproj" />
+    <Project Path="src/Vini.Infrastructure/Vini.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Vini.IntegrationTests/Vini.IntegrationTests.csproj" />
+    <Project Path="tests/Vini.UnitTests/Vini.UnitTests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,6 @@
+@Vini.Api_HostAddress = http://localhost:5160
+
+GET {{Vini.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
