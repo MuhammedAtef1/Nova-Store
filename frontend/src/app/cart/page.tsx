@@ -4,6 +4,7 @@ import { useCartStore } from "@/store/cartStore";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
+import { getImageUrl } from "@/lib/api";
 
 export default function CartPage() {
   const { cart, fetchCart, updateQuantity, removeFromCart, isLoading } = useCartStore();

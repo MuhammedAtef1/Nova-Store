@@ -1,7 +1,7 @@
 "use client";
 
 import { useCartStore } from "@/store/cartStore";
-import { api } from "@/lib/api";
+import { api, getImageUrl } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 
